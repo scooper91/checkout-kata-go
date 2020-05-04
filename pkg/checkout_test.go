@@ -25,3 +25,11 @@ func TestBBasketReturns30(t *testing.T) {
 		t.Errorf("Expected %d; Got %d", expected, total)
 	}
 }
+
+func TestCBasketReturns20(t *testing.T) {
+	const expected = 20
+	total := checkout("C")
+	if total != expected {
+		t.Errorf("Expected %d; Got %d", expected, total)
+	}
+}
