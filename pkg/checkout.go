@@ -5,5 +5,9 @@ func checkout(items string) int {
 		return 50
 	}
 
+	if items == "B" {
+		return 30
+	}
+
 	return 0
 }
