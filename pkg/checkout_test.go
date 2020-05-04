@@ -48,3 +48,8 @@ func TestMultipleItemsReturnsTotal(t *testing.T) {
 		})
 	}
 }
+
+func Test3AsReturnsDiscountedPrice(t *testing.T) {
+	total := checkout("AAA")
+	AssertTotalPrice(t, total, 130)
+}
