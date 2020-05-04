@@ -102,6 +102,24 @@ func TestBasketsWithBDiscountReturnsDiscountedPrice(t *testing.T) {
 	}
 }
 
+var multipleBDiscounts = []struct {
+	items string
+	total int
+} {
+	{"BBBB", 90},
+	{"BBBBBB", 135},
+	{"BBBBB", 120},
+	{"ABCBD", 130},
+}
+func TestBasketsWithMultipleBDiscountsReturnsDiscountedPrice(t *testing.T) {
+	for _, itemTotals := range multipleBDiscounts {
+		t.Run(itemTotals.items, func(t *testing.T) {
+			total := checkout(itemTotals.items)
+			AssertTotalPrice(t, total, itemTotals.total)
+		})
+	}
+}
+
 func TestBasketWithAAndBDiscountsReturnsDiscountedPrice(t *testing.T) {
 	total := checkout("AAABB")
 	AssertTotalPrice(t, total, 175)
