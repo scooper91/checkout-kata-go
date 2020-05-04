@@ -1,16 +1,16 @@
 package main
 
+var itemValues = map[string] int {
+	"A": 50,
+	"B": 30,
+	"C": 20,
+}
+
 func checkout(items string) int {
-	if items == "A" {
-		return 50
-	}
+	price, itemExists := itemValues[items]
 
-	if items == "B" {
-		return 30
-	}
-
-	if items == "C" {
-		return 20
+	if itemExists {
+		return price
 	}
 
 	return 0
