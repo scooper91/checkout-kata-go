@@ -8,26 +8,18 @@ var itemValues = map[rune] int {
 }
 
 func checkout(items string) int {
-	if items == "AAA" {
-		return 130
-	}
-
-	if items == "CADABA" {
-		return 195
-	}
-
-	if items == "AAAA" {
-		return 180
-	}
-
-	if items == "AAAAA" {
-		return 230
-	}
-
 	total := 0
+	aCount := 0
 
 	for _, item := range items {
 		total += itemValues[item]
+		if item == 'A' {
+			aCount++
+		}
+	}
+
+	if aCount >= 3 {
+		total -= 20
 	}
 
 	return total

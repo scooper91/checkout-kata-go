@@ -41,30 +41,28 @@ var multipleItems = []struct {
 	{"CCC", 60},
 }
 func TestMultipleItemsReturnsTotal(t *testing.T) {
-	for _, multipleItems := range multipleItems {
-		t.Run(multipleItems.items, func(t *testing.T) {
-			total := checkout(multipleItems.items)
-			AssertTotalPrice(t, total, multipleItems.total)
+	for _, itemTotals := range multipleItems {
+		t.Run(itemTotals.items, func(t *testing.T) {
+			total := checkout(itemTotals.items)
+			AssertTotalPrice(t, total, itemTotals.total)
 		})
 	}
 }
 
-func Test3AsReturnsDiscountedPrice(t *testing.T) {
-	total := checkout("AAA")
-	AssertTotalPrice(t, total, 130)
+var singleADiscount = []struct {
+	items string
+	total int
+} {
+	{"AAA", 130},
+	{"AAAA", 180},
+	{"AAAAA", 230},
+	{"CADABA", 195},
 }
-
-func Test3AsWithOtherItemsReturnsDiscountedPrice(t *testing.T) {
-	total := checkout("CADABA")
-	AssertTotalPrice(t, total, 195)
-}
-
-func Test4AsReturnsDiscountedPrice(t *testing.T) {
-	total := checkout("AAAA")
-	AssertTotalPrice(t, total, 180)
-}
-
-func Test5AsReturnsDiscountedPrice(t *testing.T) {
-	total := checkout("AAAAA")
-	AssertTotalPrice(t, total, 230)
+func TestBasketsWithADiscountReturnsDiscountedPrice(t *testing.T) {
+	for _, itemTotals := range singleADiscount {
+		t.Run(itemTotals.items, func(t *testing.T) {
+			total := checkout(itemTotals.items)
+			AssertTotalPrice(t, total, itemTotals.total)
+		})
+	}
 }
