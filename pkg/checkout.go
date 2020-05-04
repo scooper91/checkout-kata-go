@@ -18,9 +18,7 @@ func checkout(items string) int {
 		}
 	}
 
-	if aCount >= 3 {
-		total -= 20
-	}
+	total -= (aCount / 3) * 20
 
 	return total
 }

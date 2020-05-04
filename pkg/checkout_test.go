@@ -66,3 +66,21 @@ func TestBasketsWithADiscountReturnsDiscountedPrice(t *testing.T) {
 		})
 	}
 }
+
+var multipleADiscounts = []struct {
+	items string
+	total int
+} {
+	{"AAAAAA", 260},
+	{"AAAAAAAAA", 390},
+	{"AAAAAAAAAA", 440},
+	{"AACAABAA", 310},
+}
+func TestBasketsWithMultipleADiscountsReturnsDiscountedPrice(t *testing.T) {
+	for _, itemTotals := range multipleADiscounts {
+		t.Run(itemTotals.items, func(t *testing.T) {
+			total := checkout(itemTotals.items)
+			AssertTotalPrice(t, total, itemTotals.total)
+		})
+	}
+}
