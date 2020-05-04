@@ -13,22 +13,21 @@ func TestEmptyBasketReturns0(t *testing.T) {
 	AssertTotalPrice(t, total, 0)
 }
 
-func TestABasketReturns50(t *testing.T) {
-	total := checkout("A")
-	AssertTotalPrice(t, total, 50)
+var singleItems = []struct {
+	item string
+	value int
+} {
+	{"A", 50},
+	{"B", 30},
+	{"C", 20},
+	{"D", 15},
 }
 
-func TestBBasketReturns30(t *testing.T) {
-	total := checkout("B")
-	AssertTotalPrice(t, total, 30)
-}
-
-func TestCBasketReturns20(t *testing.T) {
-	total := checkout("C")
-	AssertTotalPrice(t, total, 20)
-}
-
-func TestDBasketReturns15(t *testing.T) {
-	total := checkout("D")
-	AssertTotalPrice(t, total, 15)
+func TestSingleItemReturnsCorrectPrice(t *testing.T) {
+	for _, singleItem := range singleItems {
+		t.Run(singleItem.item, func(t *testing.T) {
+			total := checkout(singleItem.item)
+			AssertTotalPrice(t, total, singleItem.value)
+		})
+	}
 }
