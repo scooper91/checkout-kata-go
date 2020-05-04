@@ -8,23 +8,18 @@ var itemValues = map[rune] int {
 }
 
 func checkout(items string) int {
+	var itemCounts = map[rune] int {}
+
 	total := 0
-	aCount := 0
-	bCount := 0
 
 	for _, item := range items {
 		total += itemValues[item]
-		if item == 'A' {
-			aCount++
-		}
 
-		if item == 'B' {
-			bCount++
-		}
+		itemCounts[item] = itemCounts[item] + 1
 	}
 
-	total -= (aCount / 3) * 20
-	total -= (bCount / 2) * 15
+	total -= (itemCounts['A'] / 3) * 20
+	total -= (itemCounts['B'] / 2) * 15
 
 	return total
 }
