@@ -53,3 +53,18 @@ func Test3AsReturnsDiscountedPrice(t *testing.T) {
 	total := checkout("AAA")
 	AssertTotalPrice(t, total, 130)
 }
+
+func Test3AsWithOtherItemsReturnsDiscountedPrice(t *testing.T) {
+	total := checkout("CADABA")
+	AssertTotalPrice(t, total, 195)
+}
+
+func Test4AsReturnsDiscountedPrice(t *testing.T) {
+	total := checkout("AAAA")
+	AssertTotalPrice(t, total, 180)
+}
+
+func Test5AsReturnsDiscountedPrice(t *testing.T) {
+	total := checkout("AAAAA")
+	AssertTotalPrice(t, total, 230)
+}
