@@ -4,6 +4,7 @@ var itemValues = map[string] int {
 	"A": 50,
 	"B": 30,
 	"C": 20,
+	"D": 15,
 }
 
 func checkout(items string) int {

@@ -27,3 +27,8 @@ func TestCBasketReturns20(t *testing.T) {
 	total := checkout("C")
 	AssertTotalPrice(t, total, 20)
 }
+
+func TestDBasketReturns15(t *testing.T) {
+	total := checkout("D")
+	AssertTotalPrice(t, total, 15)
+}
