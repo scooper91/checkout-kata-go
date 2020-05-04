@@ -17,8 +17,7 @@ var discounts = map[rune] itemDiscount {
 }
 
 func checkout(items string) int {
-	var itemCounts = map[rune] int {}
-
+	itemCounts := map[rune] int {}
 	total := 0
 
 	for _, item := range items {
