@@ -2,34 +2,28 @@ package main
 
 import "testing"
 
-func TestEmptyBasketReturns0(t *testing.T) {
-	const expected = 0
-	total := checkout("")
-	if total != expected {
-		t.Errorf("Expected %d; Got %d", expected, total)
+func AssertTotalPrice(t *testing.T, actual int, expected int) {
+	if actual != expected {
+		t.Errorf("Expected %d; Got %d", expected, actual)
 	}
+}
+
+func TestEmptyBasketReturns0(t *testing.T) {
+	total := checkout("")
+	AssertTotalPrice(t, total, 0)
 }
 
 func TestABasketReturns50(t *testing.T) {
-	const expected = 50
 	total := checkout("A")
-	if total != expected {
-		t.Errorf("Expected %d; Got %d", expected, total)
-	}
+	AssertTotalPrice(t, total, 50)
 }
 
 func TestBBasketReturns30(t *testing.T) {
-	const expected = 30
 	total := checkout("B")
-	if total != expected {
-		t.Errorf("Expected %d; Got %d", expected, total)
-	}
+	AssertTotalPrice(t, total, 30)
 }
 
 func TestCBasketReturns20(t *testing.T) {
-	const expected = 20
 	total := checkout("C")
-	if total != expected {
-		t.Errorf("Expected %d; Got %d", expected, total)
-	}
+	AssertTotalPrice(t, total, 20)
 }
