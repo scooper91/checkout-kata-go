@@ -11,11 +11,7 @@ func checkout(items string) int {
 	total := 0
 
 	for _, item := range items {
-		price, itemExists := itemValues[item]
-
-		if itemExists {
-			total += price
-		}
+		total += itemValues[item]
 	}
 
 	return total
