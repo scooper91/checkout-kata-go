@@ -1,18 +1,22 @@
 package main
 
-var itemValues = map[string] int {
-	"A": 50,
-	"B": 30,
-	"C": 20,
-	"D": 15,
+var itemValues = map[rune] int {
+	'A': 50,
+	'B': 30,
+	'C': 20,
+	'D': 15,
 }
 
 func checkout(items string) int {
-	price, itemExists := itemValues[items]
+	total := 0
 
-	if itemExists {
-		return price
+	for _, item := range items {
+		price, itemExists := itemValues[item]
+
+		if itemExists {
+			total += price
+		}
 	}
 
-	return 0
+	return total
 }

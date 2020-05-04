@@ -31,3 +31,20 @@ func TestSingleItemReturnsCorrectPrice(t *testing.T) {
 		})
 	}
 }
+
+var multipleItems = []struct {
+	items string
+	total int
+} {
+	{"ABCD", 115},
+	{"ABADCCD", 200},
+	{"CCC", 60},
+}
+func TestMultipleItemsReturnsTotal(t *testing.T) {
+	for _, multipleItems := range multipleItems {
+		t.Run(multipleItems.items, func(t *testing.T) {
+			total := checkout(multipleItems.items)
+			AssertTotalPrice(t, total, multipleItems.total)
+		})
+	}
+}
