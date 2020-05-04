@@ -27,8 +27,9 @@ func checkout(items string) int {
 		itemCounts[item] = itemCounts[item] + 1
 	}
 
-	total -= (itemCounts['A'] / discounts['A'].AmountNeeded) * discounts['A'].Discount
-	total -= (itemCounts['B'] / discounts['B'].AmountNeeded) * discounts['B'].Discount
+	for item, discount := range discounts {
+		total -= (itemCounts[item] / discount.AmountNeeded) * discount.Discount
+	}
 
 	return total
 }
